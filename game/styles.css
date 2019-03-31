@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css?family=Merriweather|Oswald");
+
+body {
+  padding: 10px;
+  text-align: center;
+  font-family: 'Oswald', sans-serif;
+  color: #03A9F4;
+  margin: 10px;
+}
+
+h1 {
+  font-size: 3.5em;
+  margin-bottom: 0px;
+}
+
+h2 {
+  margin: 10px;
+}
+
+.animate {
+  transition: all 0.2s;
+	-webkit-transition: all 0.2s;
+}
+
+.buttons {
+    display: inline-block;
+    padding: 20px;
+}
+
+.fancy-button {
+  display: block;
+  padding: 10px 40px;
+  font-size: 60px;
+  border-radius: 40px;
+  width: auto;
+  min-width: 50px;
+  
+  margin-left: 10px;
+  margin-bottom: 10px;
+  color: #FFF;
+  background-color: #03A9F4;
+  font-family: 'Merriweather', sans-serif;
+  text-shadow: 0px 5px rgba(0,0,0,0.1);
+  text-align: center;
+  text-decoration: none;
+  
+  border-bottom: 10px solid rgb(0, 135, 197);
+  border-left: (10px / 2) solid #F9A825;
+  
+}
+
+.green {
+  background-color: rgb(137, 211, 88);
+  border-bottom: 10px solid rgb(106, 163, 69);
+  pointer-events: none;
+}
+
+.red {
+  background-color: rgb(233, 92, 99);
+  border-bottom: 10px solid rgb(156, 63, 67);
+}
+
+.fancy-button:active, .down {
+	transform: translate(0px, 10px);
+  -webkit-transform: translate(0px, 10px);
+	border-bottom: 1px solid;
+  border-left: 1px solid;
+  margin-bottom: 20px;
+}
+
+.down {
+  pointer-events: none;
+}
