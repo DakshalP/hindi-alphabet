@@ -1,8 +1,11 @@
+//audio
 var audio = new Audio("sounds/button.mp3")
 var correctSound = new Audio("sounds/correct.mp3")
 var wrongSound = new Audio("sounds/wrong.mp3")
 
 var counter = 0;
+
+var letterArr = [];
 
 function playAudio(audio) {
     audio.play();
@@ -34,35 +37,39 @@ function reset() {
 function showCount() {
     document.querySelector("#counter").innerHTML = counter + " Points"
 }
-function counterUp() {
-    counter++;
-    showCount();
-}
-function counterDown() {
-    if(counter != 0) {
+function countChange(str = "up") {
+    if(str == "down" && counter != 0) {
         counter--;
+    }
+    else {
+        counter++;
     }
     showCount();
 }
 
+function getLetters() {
+    //WIP
+}
 
+//play starting animation and add click listeners to all buttons
 setTimeout(function() {
     buttons = document.querySelectorAll(".fancy-button");
     for(i=0;i<buttons.length;i++) {
+        //pop-up animation
         buttons[i].classList.remove("down");
+        //click listeners
         buttons[i].addEventListener('click', function() {
             if(this.classList.contains("correct")) {
                 this.classList.add("green");
                 playAudio(correctSound);
-                counterUp();
+                countChange();
                 setTimeout(reset,1000)
             }
             else {
                 this.classList.add("red", "down");
                 playAudio(wrongSound);
-                counterDown();
+                countChange("down");
             }
-            //playAudio(audio);
         })
     }
 }, 750)

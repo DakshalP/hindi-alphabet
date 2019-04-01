@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Merriweather|Oswald");
+@import url("https://use.fontawesome.com/releases/v5.7.2/css/all.css");
 
 body {
   padding: 10px;
@@ -11,9 +12,21 @@ body {
 h1 {
   font-size: 3.5em;
   margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 h2 {
+  text-align: right;
+}
+
+h4 {
+  cursor: pointer;
+}
+h4:active {
+  font-size: 1.1em;
+}
+
+h2, h4 {
   margin: 10px;
 }
 
@@ -58,6 +71,10 @@ h2 {
 .red {
   background-color: rgb(233, 92, 99);
   border-bottom: 10px solid rgb(156, 63, 67);
+}
+
+.icons {
+  size: 0.5em;
 }
 
 .fancy-button:active, .down {
