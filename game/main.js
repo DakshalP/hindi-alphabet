@@ -5,7 +5,11 @@ var wrongSound = new Audio("sounds/wrong.mp3")
 
 var counter = 0;
 
-var letterArr = [];
+var lettersArr = [];
+var vowels = "आ आ इ ई उ ऊ ऋ ए ऐ ओ औ";
+var letters = "क ख ग घ ङ च च ज झ ञ ट ठ ड ढ ण त थ द ध न प फ ब भ म य र ल व श ष स ह";
+
+var correctLetter;
 
 function playAudio(audio) {
     audio.play();
@@ -16,20 +20,29 @@ function playAudio(audio) {
     }, 1000);
 }
 
+//inclusive of max
 function randInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
+
 function reset() {
+    //pick a new correct
+    var letters = getLetters(4);
+    var randIndex = randInt(0, letters.length-1); //random letter   
+    correctLetter = letters[randIndex];
+
     buttons = document.querySelectorAll(".fancy-button");
     for(i=0;i<buttons.length;i++) {
         //reset color and also class that signifies which button is correct
         buttons[i].classList.remove("green", "red", "correct", "down");
+        //set new letters
+        buttons[i].innerHTML = letters[i];
     }
 
-    //pick a new correct
-    var index = randInt(0, buttons.length-1);
-    buttons[index].classList.add("correct");
+    document.querySelector("h4").innerHTML = correctLetter;
+
+    buttons[randIndex].classList.add("correct");
 
 
 }
@@ -44,11 +57,29 @@ function countChange(str = "up") {
     else {
         counter++;
     }
+
+    if(counter == 15) {
+        alert("Good job, you reached 15 points!")
+    }
     showCount();
 }
 
-function getLetters() {
-    //WIP
+function getLetters(num) {
+    var letters2 = lettersArr.slice(); //clones letterArr
+    var output = [];
+    for(let i = 0; i<num; i++) {
+        index = randInt(0,letters2.length-1);
+        output.push(letters2.splice(index, 1));
+    }
+    return output;
+}
+
+//add letters to letterArr
+var allLetters = vowels+letters;
+for(c in allLetters) {
+    if(allLetters[c] != " ") {
+        lettersArr.push(allLetters[c])
+    }
 }
 
 //play starting animation and add click listeners to all buttons
@@ -74,3 +105,4 @@ setTimeout(function() {
     }
 }, 750)
 
+reset();
