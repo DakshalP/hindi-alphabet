@@ -47,6 +47,8 @@ h2, h4 {
   border-radius: 40px;
   width: auto;
   min-width: 50px;
+
+  cursor: pointer;
   
   margin-left: 10px;
   margin-bottom: 10px;

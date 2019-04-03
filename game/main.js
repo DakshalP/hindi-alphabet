@@ -1,13 +1,13 @@
 //audio
-var audio = new Audio("sounds/button.mp3")
+var audio = new Audio("../letters/letterSounds/क.mp3")
 var correctSound = new Audio("sounds/correct.mp3")
 var wrongSound = new Audio("sounds/wrong.mp3")
 
 var counter = 0;
 
 var lettersArr = [];
-var vowels = "आ आ इ ई उ ऊ ऋ ए ऐ ओ औ";
-var letters = "क ख ग घ ङ च च ज झ ञ ट ठ ड ढ ण त थ द ध न प फ ब भ म य र ल व श ष स ह";
+var vowels = "अ आ इ ई उ ऊ ऋ ए ऐ ओ औ";
+var letters = "क ख ग घ ङ च च छ झ ञ ट ठ ड ढ ण त थ द ध न प फ ब भ म य र ल व श ष स ह";
 
 var correctLetter;
 
@@ -20,12 +20,23 @@ function playAudio(audio) {
     }, 1000);
 }
 
+function playLetter(l) {
+    try {
+        var letterFile = "../letters/letterSounds/" + l + ".mp3";
+        var letterAudio = new Audio(letterFile);
+        playAudio(letterAudio);
+    }
+    catch(err){
+        console.log("Error on playLetter(): " + err.message);
+    }
+}
+
 //inclusive of max
 function randInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
-
+//used to reset buttons (also runs once at start)
 function reset() {
     //pick a new correct
     var letters = getLetters(4);
@@ -40,9 +51,11 @@ function reset() {
         buttons[i].innerHTML = letters[i];
     }
 
-    document.querySelector("h4").innerHTML = correctLetter;
+    document.querySelector("h4").innerHTML = correctLetter; //wip
 
-    buttons[randIndex].classList.add("correct");
+    playLetter(correctLetter);
+
+    buttons[randIndex].classList.add("correct"); //set the correct button
 
 
 }
