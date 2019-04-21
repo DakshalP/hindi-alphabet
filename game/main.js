@@ -2,12 +2,13 @@
 var audio = new Audio("../letters/letterSounds/क.mp3")
 var correctSound = new Audio("sounds/correct.mp3")
 var wrongSound = new Audio("sounds/wrong.mp3")
+var wrongAlert = new Audio("sounds/wrongAnswerAlert.mp3")
 
 var counter = 0;
 
 var lettersArr = [];
 var vowels = "अ आ इ ई उ ऊ ऋ ए ऐ ओ औ";
-var letters = "क ख ग घ ङ च च छ झ ञ ट ठ ड ढ ण त थ द ध न प फ ब भ म य र ल व श ष स ह";
+var letters = "क ख ग घ ङ च च छ झ ट ठ ड ढ ण त थ द ध न प फ ब भ म य र ल व श ष स ह";
 
 var correctLetter;
 
@@ -31,6 +32,13 @@ function playLetter(l) {
     }
 }
 
+function wrongAnswerAlert(l) {
+    wrongAlert.play();
+    setTimeout(function(){
+        playLetter(l)
+    }, 2700);
+}
+
 //inclusive of max
 function randInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
@@ -51,8 +59,6 @@ function reset() {
         buttons[i].innerHTML = letters[i];
     }
 
-    document.querySelector("h4").innerHTML = correctLetter; //wip
-
     playLetter(correctLetter);
 
     buttons[randIndex].classList.add("correct"); //set the correct button
@@ -72,7 +78,7 @@ function countChange(str = "up") {
     }
 
     if(counter == 15) {
-        alert("Good job, you reached 15 points!")
+        document.querySelector("#counter").style.color = "yellowgreen";
     }
     showCount();
 }
@@ -95,6 +101,10 @@ for(c in allLetters) {
     }
 }
 
+document.querySelector("#playLetter").addEventListener('click', function(){
+    playLetter(correctLetter);
+})
+
 //play starting animation and add click listeners to all buttons
 setTimeout(function() {
     buttons = document.querySelectorAll(".fancy-button");
@@ -113,6 +123,9 @@ setTimeout(function() {
                 this.classList.add("red", "down");
                 playAudio(wrongSound);
                 countChange("down");
+                if(document.querySelector("#sayWrong").checked) {
+                    wrongAnswerAlert(this.innerHTML);
+                }
             }
         })
     }
