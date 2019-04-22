@@ -8,7 +8,7 @@ var counter = 0;
 
 var lettersArr = [];
 var vowels = "अ आ इ ई उ ऊ ऋ ए ऐ ओ औ";
-var letters = "क ख ग घ ङ च च छ झ ट ठ ड ढ ण त थ द ध न प फ ब भ म य र ल व श ष स ह";
+var letters = "क ख ग घ ङ च छ झ ट ठ ड ढ ण त थ द ध न प फ ब भ म य र ल व श ष स ह";
 
 var correctLetter;
 
@@ -36,7 +36,7 @@ function wrongAnswerAlert(l) {
     wrongAlert.play();
     setTimeout(function(){
         playLetter(l)
-    }, 2700);
+    }, 1900);
 }
 
 //inclusive of max

@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css?family=Merriweather|Oswald");
+@import url("https://use.fontawesome.com/releases/v5.7.2/css/all.css");
+
+body {
+    padding: 10px;
+    font-family: 'Oswald', sans-serif;
+    color: #03A9F4;
+    text-align: center;
+  }
+
+h1 {
+    font-size: 3.5em;
+    margin-top: 50px;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+.letter {
+    font-size: 5em;
+    margin: 0.4em;
+
+    cursor: pointer;
+}
+
+.bar {
+    display: flex;
+    justify-content: space-between;
+}
+.bar > h2 {
+    font-size: 25px;
+}
+
+.rotate {
+    transform: rotate(180deg);
+}
+
+.animate {
+    transition: all 0.2s;
+	-webkit-transition: all 0.2s;
+}
+
+#vowels, #consonants {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+#back>a {
+    text-decoration: none;
+    color: inherit;
+  }
+#back>a:active {
+    font-size: 30px;
+}
+
+#settings {
+    cursor: pointer;
+}
+#settings:active {
+    font-size: 30px;
+}
+
+/* Shake Animation */
+.shake {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+  @keyframes shake {
+    10%, 90% {
+      transform: rotate(10deg);
+    }
+    
+    20%, 80% {
+      transform: rotate(-10deg);
+    }
+  
+    30%, 50%, 70% {
+      transform: rotate(10deg);
+    }
+  
+    40%, 60% {
+      transform: rotate(-10deg);
+    }
+  }
