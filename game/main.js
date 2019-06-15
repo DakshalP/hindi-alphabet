@@ -18,7 +18,7 @@ function playAudio(audio) {
     setTimeout(function(){
         audio.pause();
         audio.currentTime = 0;
-    }, 1000);
+    }, 6500);
 }
 
 function playLetter(l) {
